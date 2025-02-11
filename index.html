@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Test</title>
+    <style>
+        body {
+            background-image: url('mxc.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px;
+            color: white;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1, .question {
+            color: black;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 15px 30px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        button:hover {
+            background-color: #ff1d6d;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        #noButton {
+            position: absolute;
+            transition: 0.3s ease-in-out;
+            z-index: 10;
+        }
+
+        #startScreen {
+            display: block;
+        }
+
+        #questionScreen {
+            display: none;
+        }
+
+        #meirl {
+            position: absolute;
+            left: 10%;
+            top: 60%;
+            transform: rotate(35deg);
+            width: 200px;
+            z-index: 1;
+        }
+
+        #meirl2 {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            z-index: 1;
+        }
+
+        #meirl3 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            z-index: 1;
+        }
+
+        #meirl4 {
+            position: absolute;
+            left: 15%;
+            top: 20%;
+            width: 180px;
+            transform: rotate(-15deg);
+            z-index: 1;
+        }
+
+        #meirl5 {
+            position: absolute;
+            top: -20%;
+            left: 40%;
+            width: 220px;
+            transform: rotate(10deg);
+            z-index: 1;
+        }
+
+        #meirl6 {
+            position: absolute;
+            top: 15%;
+            left: 80%;
+            width: 130px;
+            transform: rotate(-25deg);
+            z-index: 1;
+        }
+
+        #meirl7 {
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            width: 250px;
+            transform: rotate(5deg);
+            z-index: 1;
+        }
+
+        #meirl8 {
+            position: absolute;
+            bottom: 20%;
+            left: 70%;
+            width: 180px;
+            transform: rotate(-30deg);
+            z-index: 1;
+        }
+
+        #meirl9 {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            width: 160px;
+            transform: rotate(20deg);
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .question {
+                font-size: 20px;
+            }
+
+            button {
+                font-size: 18px;
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="startScreen">
+        <h1>You know the drill.</h1>
+        <button onclick="startTest()">Start</button>
+    </div>
+
+    <audio id="myAudio" preload="auto">
+        <source src="Hbling.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="questionScreen">
+        <h1>valenwin?</h1>
+        <p class="question">gilakebs xedav xoda ki an kis xie</p>
+
+        <div class="button-container">
+            <button id="yesButton" onclick="yesAnswer()">KIIII</button>
+            <button id="noButton" onclick="noAnswer()">na bandzi var</button>
+        </div>
+    </div>
+
+    <img id="meirl" src="meirl.png" alt="meirl">
+    <img id="meirl2" src="meirl2.png" alt="meirl2">
+    <img id="meirl3" src="meirl3.png" alt="meirl3">
+    <img id="meirl4" src="meirl.png" alt="meirl4">
+    <img id="meirl5" src="meirl2.png" alt="meirl5">
+    <img id="meirl6" src="meirl3.png" alt="meirl6">
+    <img id="meirl7" src="meirl.png" alt="meirl7">
+    <img id="meirl8" src="meirl2.png" alt="meirl8">
+    <img id="meirl9" src="meirl3.png" alt="meirl9">
+
+    <script>
+        function startTest() {
+            var audio = document.getElementById('myAudio');
+            audio.play();
+
+            setTimeout(function() {
+                document.getElementById('startScreen').style.display = 'none';
+                document.getElementById('questionScreen').style.display = 'block';
+            }, 1000);
+        }
+
+        function yesAnswer() {
+            alert('Dzaankai meti armindoda araze dagewira :>');
+        }
+
+        function noAnswer() {
+            var button = document.getElementById("noButton");
+            var maxX = window.innerWidth - button.offsetWidth;
+            var maxY = window.innerHeight - button.offsetHeight;
+            var randomX = Math.random() * maxX;
+            var randomY = Math.random() * maxY;
+
+            button.style.position = 'absolute';
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+        }
+
+        window.onload = function() {
+            var button = document.getElementById("noButton");
+            button.style.position = 'absolute';
+            button.style.left = '50%';
+            button.style.top = '50%';
+            button.style.transform = 'translate(-50%, -50%)';
+        }
+    </script>
+</body>
+</html>
